@@ -24,7 +24,12 @@ int main(int argc, char* argv[]) {
 	reg["key 0"]["skey 1"];
 
 	reg.values["sz_val"].write<neo::regedit::type::sz>("test_sz_string_value");
+	std::string sz_val = reg.values["sz_val"].read<neo::regedit::type::sz>();
+	cout << "sz_val: " << sz_val << endl;
+	
 	reg.values.insert("dw_val").first->second.write<neo::regedit::type::dword>(12345);
+	int dw_val = reg.values["dw_val"].read<neo::regedit::type::dword>();
+	cout << "dw_val: " << dw_val << endl;
 
 	cout << "HKEY_CURRENT_USER\\Software\\_test_key:" << endl;
 	cout << "  subkeys (" << reg.size() << ") :" << endl;
